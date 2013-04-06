@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+	<head>
+		<title>OMG UNICORNS</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="modernizr.js"></script>
+		<script src="unicorn.js"></script>
+		<script>
+			jQuery(document).ready(function(){
+				$('#unicorn').unicorn();
+			});
+		</script>
+	</head>
+	<body>
+		<section>
+			<div id="unicorn" class="unicorn1">
+				<div>
+					<h1>Slide 1!</h1>
+				</div>
+				<div>
+					<h1>Slide 2!</h1>
+				</div>
+				<div>
+					<h1>Slide 3!</h1>
+				</div>
+				<div>
+					<h1>Slide 4!</h1>
+				</div>
+				<div>
+					<h1>Slide 5!</h1>
+				</div>
+			</div>
+		</section>
+		<a href="#" class="toPrev">&laquo; Prev</a>
+		<a href="#" class="toNext">Next &raquo;</a>
+		<div id="unicornController">
+			<a href="#" class="to1">1</a>
+			<a href="#" class="to2">2</a>
+			<a href="#" class="to3">3</a>
+			<a href="#" class="to4">4</a>
+			<a href="#" class="to5">5</a>
+		</div>
+	</body>
+</html>
