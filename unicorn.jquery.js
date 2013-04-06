@@ -36,26 +36,38 @@
 				toggleNextPrev(current);
 			}	
 		}
-		
+		var testNext = 1;
+		var testPrev = 1;
 		function toggleNextPrev(current) {
-			if(options.hideNextPrev) {
-				//store markup for both buttons.
-				var next = $('.'+nextSlide+'').html();
-				var prev = $('.'+prevSlide+'').html();
-				var nextSlide = options.nextSlide;
-				var prevSlide = options.prevSlide;
-				if (current == 1) {
-					$('.'+prevSlide+'').remove();
-				} else if (current == slideCount) {
-					$('.'+nextSlide+'').remove();
-				} else {
-					if(!$('.'+nextSlide+'')) {
-						$('.'+prevSlide+'').before(next);
-					} else if (!$('.'+prevSlide+'')) {
-						$('.'+nextSlide+'').after(prev);
-					} 
+			if(options.hideNextPrev) {						
+					var nextSlide = options.nextSlide;
+					var prevSlide = options.prevSlide;
+					if (current == 1) {
+						$('.'+prevSlide+'').hide();
+						if(!testNext) {
+							$('.'+nextSlide+'').show();
+							testNext = 1;
+						}
+						testPrev = 0;
+					} else if (current == slideCount) {
+						$('.'+nextSlide+'').hide();
+						if(!testPrev) {
+							$('.'+prevSlide+'').show();
+							testPrev = 1;
+						}
+						testNext = 0;
+					} else {
+						if(!testPrev) {
+							$('.'+prevSlide+'').show();
+							testPrev = 1;
+						} else if (!testNext) {
+							$('.'+nextSlide+'').show();
+							testNext = 1;
+						} 
+					}
 				}
-			}
+				
+			
 		}
 		toggleNextPrev(current);
 		
@@ -65,16 +77,19 @@
 				return false;
 			} else {
 				current++;
+				toggleNextPrev(current);
 				animateSlider(current);
 			}			
 		});
 		
 		$('.'+options.prevSlide+'').click(function(e){
 			e.preventDefault();
+			toggleNextPrev(current);
 			if(current == 0) {
 				return false;
 			} else {
 				current--;
+				toggleNextPrev(current);
 				animateSlider(current);
 			}
 		});
@@ -83,11 +98,12 @@
 			$('#'+options.controllerId+'').children().click(function(e){
 				e.preventDefault();
 				var slideTo = $(this).attr('class').split(options.controllerPrefix);
-				slideTo = current[1];
+				slideTo = slideTo[1];
 				if(current == slideTo) {
 					return false
 				} else {
 					current = slideTo;
+					toggleNextPrev(current);
 					animateSlider(current);
 				}				
 			});
