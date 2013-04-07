@@ -69,7 +69,4 @@ Your CSS should look like this:
     }
     
 
-
-Oh, and it expects you to know how to use CSS transitions.
-
 <a href="http://ekidd.github.io/Unicorn-Carousel/">Demo Page</a>
