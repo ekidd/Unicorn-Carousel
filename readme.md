@@ -4,3 +4,5 @@ Yes, everyone makes a damned carousel. This one is special, though. It comes wit
 Really, it's seriously simple and pretty damned adptable. 
 
 Oh, and it expects you to know how to use CSS transitions.
+
+<a href="http://ekidd.github.io/Unicorn-Carousel/">Demo Page</a>
