@@ -12,7 +12,7 @@
 			controllerPrefix: 'to',
 		};
 		var options = $.extend(defaults, options);
-		
+		$(this).addClass(options.slideClass+'1');
 		var slideCount = $(this).children().length;			
 		var current = 1;
 		
