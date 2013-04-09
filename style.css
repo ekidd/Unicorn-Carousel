@@ -1,6 +1,7 @@
 body{
 	padding:0;
 	margin:0;
+	font-family: 'Helvetica', 'Arial', sans-serif;
 }
 
 section {
@@ -71,4 +72,31 @@ div.unicorn5 {
 
 #unicorn > div > h1 {
 	text-align: center;
+}
+
+a.progNav {
+	color: rgb(50,50,50);
+	width: 5em;
+	height: 1.5em;
+	font-size:2em;
+	text-align: center;
+	text-decoration: none;
+	line-height:1.5em;
+	margin: -1.5em 0 0 0em;
+	background: rgba(255,255,255,0.7);
+}
+
+a.progNav:hover {
+	background: rgba(255,255,255,0.5);
+	color: rgb(80,80,80);
+}
+
+a.toPrev {
+	float:left;
+	border-radius: 0 0.2em 0 0;	
+}
+
+a.toNext {
+	float:right;
+	border-radius: 0.2em 0 0 0;
 }
