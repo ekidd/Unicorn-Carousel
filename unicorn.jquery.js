@@ -8,6 +8,10 @@
 			hideNextPrev: true,
 			slideClass: 'unicorn',
 			hasController: true,
+			animation: {
+				method: 'transform', 
+				direction: 'horizontal'
+			},
 			controllerId: 'unicornController',
 			controllerPrefix: 'to',
 		};
@@ -15,6 +19,37 @@
 		
 		var slideCount = $(this).children().length;			
 		var current = 1;
+		if (M.csstransforms3d && options.animation.method == 'transform') {
+			var pWidth = $(unicorn).width();
+			var rotate = 360/slideCount;
+			var transZ = Math.round( ( pWidth / 2 ) / Math.tan( Math.PI / slideCount ) );
+			var currentRot = (current - 1)*rotate;	
+			$(unicorn).css({'-webkit-transform':'translateZ(-'+transZ+'px) rotateY(0deg)'});			
+		}
+		
+		function setForScreen() {
+			$(unicorn).children().each(function(i,v){
+				var rotVal = i*rotate;
+				var pHeight = $(unicorn).height();
+				if(options.animation.direction == 'horizontal') {					
+					if (i != 0) {
+						$(v).css({
+							'-webkit-transform':'rotateY('+rotVal+'deg) translateZ('+transZ+'px)',
+							'margin-top': '-'+pHeight+'px'
+						});
+					} else {
+						$(v).css({'-webkit-transform':'rotateY('+rotVal+'deg) translateZ('+transZ+'px)'});
+					}
+				}
+			});
+			$(unicorn).css({'-webkit-transform':'translateZ(-'+transZ+'px) rotateY(-'+currentRot+'deg)'});
+		}
+		
+		setForScreen();
+		
+		$(window).resize(function(){
+			setForScreen();
+		});
 		
 		function animateSlider(current){
 			if(!M.csstransitions) {
@@ -28,6 +63,13 @@
 					width = width*index;
 					$(unicorn).animate({'margin-left': '-'+width+'px'}, 1000, 'linear');
 				}
+			} else if (options.animation.method == 'transform') {
+				currentRot = (current - 1)*rotate;
+				$(unicorn).attr('style', '');
+				if (options.animation.direction == 'horizontal') {
+					$(unicorn).css({'-webkit-transform':'translateZ(-'+transZ+'px) rotateY(-'+currentRot+'deg)'});
+				}
+				
 			} else {
 				//clear class
 				$(unicorn).attr('class', '');

@@ -1,31 +1,44 @@
+html {
+	height: 100%;
+}
 body{
 	padding:0;
 	margin:0;
+	height: 100%;
 	font-family: 'Helvetica', 'Arial', sans-serif;
 }
 
 section {
 	width:100%;
-	float:left;
-	margin:0;
+	margin:-3em 0 0 0;
 	padding:0;
 	overflow: hidden;
-	height: 20em;
-	box-shadow: inset 0 2px 2px #333;
+	height: 100%;
+}
+
+.csstransforms3d section {
+	-moz-perspective: 1000px;
+	-webkit-perspective: 1000px;
 }
 
 div#unicorn {
-	width: 500%;
+	width: 100%;
 	height: 100%;
-	transition: margin 1s ease;
+	/*transition: margin 1s ease;
 	-webkit-transition: margin 1s ease;
 	-moz-transition: margin 1s ease;
 	-o-transition: margin 1s ease;
-	-ms-transition: margin 1s ease;
+	-ms-transition: margin 1s ease;*/
+}
+
+.csstransforms3d div#unicorn {
+	-moz-transform-style: preserve-3d;
+	-webkit-transform-style: preserve-3d;
+	-webkit-transition: -webkit-transform 1s ease;
 }
 
 div.unicorn1 {
-	margin-left: 0;
+	margin-left: 0%;
 }
 
 div.unicorn2 {
@@ -45,7 +58,7 @@ div.unicorn5 {
 }
 
 #unicorn > div {
-	width: 20%;
+	width: 100%;
 	float:left;
 	height: 100%;
 }
@@ -74,29 +87,23 @@ div.unicorn5 {
 	text-align: center;
 }
 
-a.progNav {
-	color: rgb(50,50,50);
-	width: 5em;
-	height: 1.5em;
-	font-size:2em;
-	text-align: center;
-	text-decoration: none;
-	line-height:1.5em;
-	margin: -1.5em 0 0 0em;
-	background: rgba(255,255,255,0.7);
+div#unicornController {
+	position: relative;
+	width: 80%;
+	padding: 0 10%;
+	height: 3em;
+	background-color:rgba(30,30,30,0.8);
+	margin: 0 0 -3em 0;
+	z-index: 10;
 }
 
-a.progNav:hover {
-	background: rgba(255,255,255,0.5);
-	color: rgb(80,80,80);
-}
-
-a.toPrev {
+div#unicornController a {
 	float:left;
-	border-radius: 0 0.2em 0 0;	
-}
-
-a.toNext {
-	float:right;
-	border-radius: 0.2em 0 0 0;
+	width: 20%;
+	height: 2em;
+	text-align:center;
+	color: rgba(255,255,255,0.8);
+	font-size: 1.5em;
+	text-decoration: none;
+	line-height: 2em;
 }
