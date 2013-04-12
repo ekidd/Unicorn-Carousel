@@ -31,6 +31,9 @@
 			$(unicorn).children().each(function(i,v){
 				var rotVal = i*rotate;
 				var pHeight = $(unicorn).height();
+				//override old values
+				pWidth = $(unicorn).width();
+				transZ = Math.round( ( pWidth / 2 ) / Math.tan( Math.PI / slideCount ) );
 				if(options.animation.direction == 'horizontal') {					
 					if (i != 0) {
 						$(v).css({
